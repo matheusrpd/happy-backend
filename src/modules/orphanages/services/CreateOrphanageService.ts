@@ -42,6 +42,10 @@ class CreateOrphanageService {
     images
    }: IRequest): Promise<Orphanage> {
 
+    for(let image of images) {
+      await this.storageProvider.saveFile(image.path);
+    }
+    
     const orphanage = await this.orphanagesRepository.create({
       name, 
       latitude, 

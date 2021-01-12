@@ -24,7 +24,7 @@ export default class Orphanage {
   @Column()
   opening_hours: string;
 
-  @Column()
+  @Column({ type: 'boolean', default: false })
   open_on_weekends: boolean;
 
   @OneToMany(() => Image, image => image.orphanage, {

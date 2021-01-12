@@ -28,28 +28,18 @@
   integrity sha512-zurD1ibz21BRlAOIKP8yhrxlqKx6L9VCwkB5kMiP6nZAhoF5MvC7qS1qPA7nRcr1GJolfkQC7/EAL4hdYejLtg==
 
 "@types/express-serve-static-core@*":
-  version "4.17.17"
-  resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.17.17.tgz#6ba02465165b6c9c3d8db3a28def6b16fc9b70f5"
-  integrity sha512-YYlVaCni5dnHc+bLZfY908IG1+x5xuibKZMGv8srKkvtul3wUuanYvpIj9GXXoWkQbaAdR+kgX46IETKUALWNQ==
+  version "4.17.18"
+  resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.17.18.tgz#8371e260f40e0e1ca0c116a9afcd9426fa094c40"
+  integrity sha512-m4JTwx5RUBNZvky/JJ8swEJPKFd8si08pPF2PfizYjGZOKr/svUWPcoUmLow6MmPzhasphB7gSTINY67xn3JNA==
   dependencies:
     "@types/node" "*"
     "@types/qs" "*"
     "@types/range-parser" "*"
 
-"@types/express@*":
+"@types/express@*", "@types/express@^4.17.9":
   version "4.17.10"
   resolved "https://registry.yarnpkg.com/@types/express/-/express-4.17.10.tgz#850fe07d6d887412d522a4295fb84a685e69f683"
   integrity sha512-GRwKdE+iV6mA8glCvQ7W5iaoIhd6u1HDsNTF76UPRi7T89SLjOfeCLShVmQSgpXzcpf3zgcz2SbMiCcjnYRRxQ==
-  dependencies:
-    "@types/body-parser" "*"
-    "@types/express-serve-static-core" "*"
-    "@types/qs" "*"
-    "@types/serve-static" "*"
-
-"@types/express@^4.17.9":
-  version "4.17.9"
-  resolved "https://registry.yarnpkg.com/@types/express/-/express-4.17.9.tgz#f5f2df6add703ff28428add52bdec8a1091b0a78"
-  integrity sha512-SDzEIZInC4sivGIFY4Sz1GG6J9UObPwCInYJjko2jzOf/Imx/dlpume6Xxwj1ORL82tBbmN4cPDIDkLbWHk9hw==
   dependencies:
     "@types/body-parser" "*"
     "@types/express-serve-static-core" "*"
@@ -305,7 +295,7 @@ chokidar@^3.4.0:
   optionalDependencies:
     fsevents "~2.3.1"
 
-cli-highlight@^2.1.4:
+cli-highlight@^2.1.10:
   version "2.1.10"
   resolved "https://registry.yarnpkg.com/cli-highlight/-/cli-highlight-2.1.10.tgz#26a087da9209dce4fcb8cf5427dc97cd96ac173a"
   integrity sha512-CcPFD3JwdQ2oSzy+AMG6j3LRTkNjM82kzcSKzoVw6cLanDCJNlsLjeqVTOTfOfucnWv5F0rmBemVf1m9JiIasw==
@@ -1600,15 +1590,15 @@ typedarray@^0.0.6:
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
 typeorm@^0.2.29:
-  version "0.2.29"
-  resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.2.29.tgz#401289dc91900d72eccb26e31cdb7f0591a2272e"
-  integrity sha512-ih1vrTe3gEAGKRcWlcsTRxTL7gNjacQE498wVGuJ3ZRujtMqPZlbAWuC7xDzWCRjQnkZYNwZQeG9UgKfxSHB5g==
+  version "0.2.30"
+  resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.2.30.tgz#a0df2256402cbcdde8049a244437560495ce9b38"
+  integrity sha512-qpr8AO3Phi6ZF7qMHOrRdNisVt8jE1KfmW0ooLFcXscA87aJ12aBPyB9cJfxGNjNwd7B3WIK9ZlBveWiqd74QA==
   dependencies:
     "@sqltools/formatter" "1.2.2"
     app-root-path "^3.0.0"
     buffer "^5.5.0"
     chalk "^4.1.0"
-    cli-highlight "^2.1.4"
+    cli-highlight "^2.1.10"
     debug "^4.1.1"
     dotenv "^8.2.0"
     glob "^7.1.6"

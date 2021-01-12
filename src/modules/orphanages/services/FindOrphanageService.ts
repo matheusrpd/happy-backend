@@ -17,7 +17,6 @@ class FindOrphanageService {
   ){}
 
   public async execute({ id }: IRequest): Promise<Orphanage> {
-
     const orphanage = await this.orphanagesRepository.findById({ id });
 
     return orphanage;

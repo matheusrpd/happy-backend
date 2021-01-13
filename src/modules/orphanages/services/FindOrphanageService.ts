@@ -1,4 +1,5 @@
 import { injectable, inject } from 'tsyringe';
+import AppError from '@shared/errors/AppError';
 
 import IOrphanagesRepository from '@modules/orphanages/repositories/IOrphanagesRepository';
 
@@ -18,6 +19,10 @@ class FindOrphanageService {
 
   public async execute({ id }: IRequest): Promise<Orphanage> {
     const orphanage = await this.orphanagesRepository.findById({ id });
+
+    if (!orphanage) {
+      throw new AppError('Orphanage not found.');
+    }
 
     return orphanage;
   }

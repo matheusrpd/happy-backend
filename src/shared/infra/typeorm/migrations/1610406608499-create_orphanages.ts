@@ -12,7 +12,7 @@ export class createOrphanages1610406608499 implements MigrationInterface {
           unsigned: true,
           isPrimary: true,
           isGenerated: true,
-          generationStrategy: 'increment'
+          generationStrategy: 'increment',
         },
         {
           name: 'name',
@@ -21,13 +21,13 @@ export class createOrphanages1610406608499 implements MigrationInterface {
         {
           name: 'latitude',
           type: 'decimal',
-          scale: 2,
+          scale: 8,
           precision: 10,
         },
         {
           name: 'longitude',
           type: 'decimal',
-          scale: 2,
+          scale: 8,
           precision: 10,
         },
         {
@@ -48,7 +48,7 @@ export class createOrphanages1610406608499 implements MigrationInterface {
           default: false,
         },
       ]
-    }));
+    }))
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {

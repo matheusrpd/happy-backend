@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { classToClass } from 'class-transformer';
 
 import CreateOrphanageService from '@modules/orphanages/services/CreateOrphanageService';
 import ListOrphanagesService from '@modules/orphanages/services/ListOrphanagesService';
@@ -12,7 +13,7 @@ export default class OrphanagesController {
 
     const orphanages = await listOrphanagesService.execute();
 
-    return response.json(orphanages);
+    return response.json(classToClass(orphanages));
   }
 
   public async show(request: Request, response: Response): Promise<Response> {
@@ -22,7 +23,7 @@ export default class OrphanagesController {
 
     const orphanage = await findOrphanageService.execute({ id });
 
-    return response.json(orphanage);
+    return response.json(classToClass(orphanage));
   }
 
   public async create(request: Request, response: Response): Promise<Response> {
@@ -56,6 +57,6 @@ export default class OrphanagesController {
       images
     });
   
-    return response.status(201).json(orphanage);
+    return response.status(201).json(classToClass(orphanage));
   }
 }

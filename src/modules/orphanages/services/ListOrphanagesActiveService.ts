@@ -5,7 +5,7 @@ import IOrphanagesRepository from '@modules/orphanages/repositories/IOrphanagesR
 import Orphanage from '@modules/orphanages/infra/typeorm/entities/Orphanage';
 
 @injectable()
-class ListOrphanagesService {
+class ListOrphanagesActiveService {
 
   constructor (
     @inject('OrphanagesRepository')
@@ -13,10 +13,10 @@ class ListOrphanagesService {
   ){}
 
   public async execute(): Promise<Orphanage[]> {
-    const orphanages = await this.orphanagesRepository.find();
+    const orphanages = await this.orphanagesRepository.findAllActive();
 
     return orphanages;
   }
 }
 
-export default ListOrphanagesService;
+export default ListOrphanagesActiveService;

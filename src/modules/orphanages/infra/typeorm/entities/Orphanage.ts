@@ -27,8 +27,11 @@ export default class Orphanage {
   @Column({ type: 'boolean', default: false })
   open_on_weekends: boolean;
 
+  @Column({ type: 'boolean', default: false })
+  active: boolean;
+
   @OneToMany(() => Image, image => image.orphanage, {
-    cascade: ['insert', 'update']
+    cascade: ['insert', 'update', 'remove']
   })
   @JoinColumn({ name: 'orphanage_id' })
   images: Image[];

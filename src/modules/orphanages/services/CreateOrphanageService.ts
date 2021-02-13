@@ -17,6 +17,7 @@ interface IRequest {
   instructions: string,
   opening_hours: string;
   open_on_weekends: boolean;
+  active: boolean,
   images: Image[];
 }
 
@@ -39,6 +40,7 @@ class CreateOrphanageService {
     instructions, 
     opening_hours, 
     open_on_weekends,
+    active,
     images
    }: IRequest): Promise<Orphanage> {
 
@@ -54,6 +56,7 @@ class CreateOrphanageService {
       instructions, 
       opening_hours, 
       open_on_weekends,
+      active,
       images
     });
 

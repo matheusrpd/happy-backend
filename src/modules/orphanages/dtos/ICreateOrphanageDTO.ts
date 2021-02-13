@@ -10,5 +10,6 @@ export default interface ICreateOrphanageDTO {
   instructions: string,
   opening_hours: string;
   open_on_weekends: boolean;
+  active: boolean,
   images: Image[];
 }

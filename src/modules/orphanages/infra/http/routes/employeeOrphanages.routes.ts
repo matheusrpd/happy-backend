@@ -5,6 +5,7 @@ import { celebrate, Segments, Joi } from 'celebrate';
 import uploadConfig from '@config/upload';
 
 import ensureAuthenticated from '@modules/users/infra/htpp/middlewares/ensureAuthenticated';
+import { is } from '@modules/users/infra/htpp/middlewares/ensurePermission';
 import EmployeeOrphanagesController from '../controllers/EmployeeOrphanagesController';
 
 const employeeOrphanagesRouter = Router();
@@ -12,11 +13,23 @@ const upload = multer(uploadConfig);
 
 const employeeOrphanagesController = new EmployeeOrphanagesController();
 
-employeeOrphanagesRouter.get('/dependents', ensureAuthenticated, employeeOrphanagesController.index);
-employeeOrphanagesRouter.delete('/:id', employeeOrphanagesController.delete);
+employeeOrphanagesRouter.use(ensureAuthenticated);
+
+employeeOrphanagesRouter.get(
+  '/dependents',  
+  is(['ROLE_ADMIN']),
+  employeeOrphanagesController.index,
+);
+
+employeeOrphanagesRouter.delete(
+  '/:id',  
+  is(['ROLE_ADMIN', 'ROLE_EMPLOYEE']),
+  employeeOrphanagesController.delete
+);
 
 employeeOrphanagesRouter.post(
-  '/', 
+  '/',  
+  is(['ROLE_ADMIN', 'ROLE_EMPLOYEE']),
   upload.array('images'), 
   employeeOrphanagesController.create,
   celebrate({
@@ -33,8 +46,8 @@ employeeOrphanagesRouter.post(
 );
 
 employeeOrphanagesRouter.put(
-  '/:id', 
-  ensureAuthenticated,
+  '/:id',  
+  is(['ROLE_ADMIN', 'ROLE_EMPLOYEE']),
   upload.array('images'), 
   employeeOrphanagesController.update,
   celebrate({

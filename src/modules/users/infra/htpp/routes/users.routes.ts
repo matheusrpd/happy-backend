@@ -13,6 +13,7 @@ usersRouter.post(
       name: Joi.string().required(),
       email: Joi.string().email().required(),
       password: Joi.string().required(),
+      roles: Joi.array().items(Joi.string()).required()
     },
   }),
   usersController.create,

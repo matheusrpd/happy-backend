@@ -13,22 +13,23 @@ const upload = multer(uploadConfig);
 
 const employeeOrphanagesController = new EmployeeOrphanagesController();
 
-employeeOrphanagesRouter.use(ensureAuthenticated);
-
 employeeOrphanagesRouter.get(
   '/dependents',  
+  ensureAuthenticated,
   is(['ROLE_ADMIN']),
   employeeOrphanagesController.index,
 );
 
 employeeOrphanagesRouter.delete(
   '/:id',  
+  ensureAuthenticated,
   is(['ROLE_ADMIN', 'ROLE_EMPLOYEE']),
   employeeOrphanagesController.delete
 );
 
 employeeOrphanagesRouter.post(
   '/',  
+  ensureAuthenticated,
   is(['ROLE_ADMIN', 'ROLE_EMPLOYEE']),
   upload.array('images'), 
   employeeOrphanagesController.create,
@@ -47,6 +48,7 @@ employeeOrphanagesRouter.post(
 
 employeeOrphanagesRouter.put(
   '/:id',  
+  ensureAuthenticated,
   is(['ROLE_ADMIN', 'ROLE_EMPLOYEE']),
   upload.array('images'), 
   employeeOrphanagesController.update,

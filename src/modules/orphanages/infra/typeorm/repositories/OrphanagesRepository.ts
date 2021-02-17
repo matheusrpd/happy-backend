@@ -16,7 +16,7 @@ class OrphanagesRepository implements IOrphanagesRepository {
 
   public async findAllNotActive(): Promise<Orphanage[]> {
     const orphanages = await this.ormRepository.find({
-      relations: ['images'],
+      relations: ['images', 'employee'],
       where: { active: false }
     });
 
@@ -25,7 +25,7 @@ class OrphanagesRepository implements IOrphanagesRepository {
 
   public async findAllActive(): Promise<Orphanage[]> {
     const orphanages = await this.ormRepository.find({
-      relations: ['images'],
+      relations: ['images', 'employee'],
       where: { active: true }
     });
 
@@ -34,7 +34,7 @@ class OrphanagesRepository implements IOrphanagesRepository {
 
   public async findById({ id }: IFindOrphanageDTO): Promise<Orphanage | undefined> {
     const orphanage = await this.ormRepository.findOne(id, {
-      relations: ['images']
+      relations: ['images', 'employee']
     });
 
     return orphanage;
@@ -49,6 +49,7 @@ class OrphanagesRepository implements IOrphanagesRepository {
     opening_hours, 
     open_on_weekends,
     active,
+    employee_id,
     images
   }: ICreateOrphanageDTO): Promise<Orphanage> {
 
@@ -61,6 +62,7 @@ class OrphanagesRepository implements IOrphanagesRepository {
       opening_hours, 
       open_on_weekends,
       active,
+      employee_id,
       images
     });
 

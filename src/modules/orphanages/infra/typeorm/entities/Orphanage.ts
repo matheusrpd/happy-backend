@@ -1,5 +1,14 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn } from 'typeorm';
+import { 
+  Entity, 
+  Column, 
+  PrimaryGeneratedColumn, 
+  OneToMany, 
+  JoinColumn, 
+  ManyToOne 
+} from 'typeorm';
+
 import Image from './Image';
+import User from '@modules/users/infra/typeorm/entities/User';
 
 @Entity('orphanages')
 export default class Orphanage {
@@ -29,6 +38,13 @@ export default class Orphanage {
 
   @Column({ type: 'boolean', default: false })
   active: boolean;
+
+  @Column()
+  employee_id: string;
+
+  @ManyToOne(() => User)
+  @JoinColumn({ name: 'employee_id' })
+  employee: User;
 
   @OneToMany(() => Image, image => image.orphanage, {
     cascade: ['insert', 'update', 'remove']

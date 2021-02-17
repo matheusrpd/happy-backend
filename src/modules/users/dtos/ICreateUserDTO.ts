@@ -1,6 +1,6 @@
 import Role from '../infra/typeorm/entities/Role';
 
-export default interface ICreateUsersDTO {
+export default interface ICreateUserDTO {
   name: string;
   email: string;
   password: string;

@@ -28,6 +28,7 @@ export default class EmployeeOrphanagesController {
       open_on_weekends,
       active
     } = request.body;
+    const { id: employee_id } = request.user;
 
     const requestImages = request.files as Express.Multer.File[];
     const images = requestImages.map(image => {
@@ -47,6 +48,7 @@ export default class EmployeeOrphanagesController {
       opening_hours, 
       open_on_weekends,
       active,
+      employee_id,
       images
     });
   

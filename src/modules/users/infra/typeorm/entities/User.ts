@@ -5,11 +5,14 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToMany,
+  OneToMany,
   JoinTable,
 } from 'typeorm';
 
 import { Exclude } from 'class-transformer';
+
 import Role from "./Role";
+import CreditCard from '@modules/payments/infra/typeorm/entities/CreditCard';
 
 @Entity('users')
 class User {
@@ -26,6 +29,36 @@ class User {
   @Exclude()
   password: string;
 
+  @Column()
+  phone_number: string;
+
+  @Column()
+  cpf: string;
+
+  @Column()
+  birthday: Date;
+
+  @Column()
+  country: string;
+
+  @Column()
+  state: string;
+
+  @Column()
+  city: string;
+
+  @Column()
+  neighborhood: string;
+
+  @Column()
+  street: string;
+
+  @Column()
+  street_number: string;
+
+  @Column()
+  zipcode: string;
+
   @CreateDateColumn()
   created_at: Date;
 
@@ -39,6 +72,9 @@ class User {
     inverseJoinColumns: [{ name: "role_id" }],
   })
   roles: Role[];
+
+  @OneToMany(type => CreditCard, creditCard => creditCard.user)
+  credit_cards: CreditCard[];
 }
 
 export default User;

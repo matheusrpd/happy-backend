@@ -12,6 +12,16 @@ interface IRequest {
   name: string;
   email: string;
   password: string;
+  phone_number: string;
+  cpf: string;
+  birthday: Date;
+  country: string;
+  state: string;
+  city: string;
+  neighborhood: string;
+  street: string;
+  street_number: string;
+  zipcode: string;
   roles: string[];
 }
 
@@ -28,7 +38,22 @@ class CreateUserService {
     private hashProvider: IHashProvider,
   ) {}
 
-  async execute({ name, email, password, roles }: IRequest): Promise<User> {
+  async execute({ 
+    name, 
+    email, 
+    password,
+    cpf,
+    phone_number,
+    birthday,
+    country,
+    city,
+    state,
+    neighborhood,
+    street,
+    street_number,
+    zipcode,
+    roles
+  }: IRequest): Promise<User> {
     const checkUserExists = await this.usersRepository.findByEmail(email);
 
     if (checkUserExists) {
@@ -43,6 +68,16 @@ class CreateUserService {
       name,
       email,
       password: hashedPassword,
+      cpf,
+      phone_number,
+      birthday,
+      country,
+      city,
+      state,
+      neighborhood,
+      street,
+      street_number,
+      zipcode,
       roles: existsRoles
     });
 

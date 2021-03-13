@@ -15,6 +15,9 @@ import PermissionsRepository from '@modules/users/infra/typeorm/repositories/Per
 import IRolesRepository from '@modules/users/repositories/IRolesRepository';
 import RolesRepository from '@modules/users/infra/typeorm/repositories/RolesRepository';
 
+import ICreditCardsRepository from '@modules/payments/repositories/ICreditCardsRepository';
+import CreditCardsRepository from '@modules/payments/infra/typeorm/repositories/CreditCardsRepository';
+
 container.registerSingleton<IOrphanagesRepository>(
   'OrphanagesRepository',
   OrphanagesRepository,
@@ -33,4 +36,9 @@ container.registerSingleton<IPermissionsRepository>(
 container.registerSingleton<IRolesRepository>(
   'RolesRepository',
   RolesRepository,
+);
+
+container.registerSingleton<ICreditCardsRepository>(
+  'CreditCardsRepository',
+  CreditCardsRepository,
 );

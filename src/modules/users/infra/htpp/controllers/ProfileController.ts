@@ -19,7 +19,22 @@ export default class ProfileController {
   public async update(request: Request, response: Response): Promise<Response> {
     const userId = request.user.id;
 
-    const { name, email, password, old_password } = request.body;
+    const { 
+      name, 
+      email,
+      password, 
+      old_password,
+      phone_number,
+      cpf,
+      birthday,
+      country,
+      state,
+      city,
+      neighborhood,
+      street,
+      street_number,
+      zipcode
+    } = request.body;
 
     const updateUser = container.resolve(UpdateProfileService);
 
@@ -29,6 +44,16 @@ export default class ProfileController {
       email,
       oldPassword: old_password,
       password,
+      phone_number,
+      cpf,
+      birthday,
+      country,
+      state,
+      city,
+      neighborhood,
+      street,
+      street_number,
+      zipcode
     });
 
     return response.json(classToClass(user));

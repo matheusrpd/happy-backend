@@ -22,5 +22,4 @@ creditCardsRouter.post(
   creditCardsController.create,
 );
 
-
 export default creditCardsRouter;

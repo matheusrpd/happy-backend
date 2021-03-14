@@ -1,4 +1,4 @@
-import { getRepository, Repository, Not } from 'typeorm';
+import { getRepository, Repository } from 'typeorm';
 
 import ICreditCardsRepository from '@modules/payments/repositories/ICreditCardsRepository';
 import ICreateCreditCardDTO from '@modules/payments/dtos/ICreateCreditCardDTO';
@@ -13,7 +13,9 @@ class CreditCardsRepository implements ICreditCardsRepository {
   }
 
   public async findById(id: string): Promise<CreditCard | undefined> {
-    return this.ormRepository.findOne(id);
+    return this.ormRepository.findOne(id, {
+      relations: ['user']
+    });
   }
 
   public async create({

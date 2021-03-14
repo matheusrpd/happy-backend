@@ -8,6 +8,7 @@ import profileRouter from '@modules/users/infra/htpp/routes/profile.routes';
 import permissionsRouter from '@modules/users/infra/htpp/routes/permissions.routes';
 import rolesRouter from '@modules/users/infra/htpp/routes/roles.routes';
 import creditCardsRouter from '@modules/payments/infra/http/routes/creditCards.routes';
+import donationsRouter from '@modules/payments/infra/http/routes/donations.routes';
 
 const routes = Router();
 
@@ -18,5 +19,6 @@ routes.use('/users', usersRouter);
 routes.use('/profile', profileRouter);
 routes.use('/orphanages', employeeOrphanagesRouter, orphanagesRouter);
 routes.use('/creditCards', creditCardsRouter);
+routes.use('/donations', donationsRouter);
 
 export default routes;

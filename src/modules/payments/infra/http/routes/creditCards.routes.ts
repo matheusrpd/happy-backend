@@ -22,4 +22,10 @@ creditCardsRouter.post(
   creditCardsController.create,
 );
 
+creditCardsRouter.get(
+  '/:id',
+  ensureAuthenticated,
+  creditCardsController.show,
+);
+
 export default creditCardsRouter;

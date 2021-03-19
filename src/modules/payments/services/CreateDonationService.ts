@@ -43,19 +43,19 @@ class CreateDonationService {
     const user = await this.usersRepository.findById(user_id);
 
     if (!user) {
-      throw new AppError('User not found.');
+      throw new AppError('User not found.', 404);
     }
 
     const orphanage = await this.orphanagesRepository.findById({ id: orphanage_id });
 
     if (!orphanage) {
-      throw new AppError('Orphanage not found.');
+      throw new AppError('Orphanage not found.', 404);
     }
 
     const creditCard = await this.creditCardsRepository.findById(credit_card_id);
 
     if (!creditCard) {
-      throw new AppError('Credit card not found.');
+      throw new AppError('Credit card not found.', 404);
     }
 
     if (creditCard.user.id !== user.id) {

@@ -21,7 +21,7 @@ class FindOrphanageService {
     const orphanage = await this.orphanagesRepository.findById({ id });
 
     if (!orphanage) {
-      throw new AppError('Orphanage not found.');
+      throw new AppError('Orphanage not found.', 404);
     }
 
     return orphanage;

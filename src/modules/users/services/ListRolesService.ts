@@ -19,7 +19,7 @@ class ListRolesService {
     const user = await this.usersRepository.findById(id);
 
     if (!user) {
-      throw new AppError('User not found.');
+      throw new AppError('User not found.', 404);
     }
 
     const roles = user.roles.map(r => r.name);

@@ -31,7 +31,7 @@ profileRouter.put(
       street_number: Joi.string().required(),
       zipcode: Joi.string().required(),
     },
-  }),
+  }, { abortEarly: false }),
   profileController.update,
 );
 

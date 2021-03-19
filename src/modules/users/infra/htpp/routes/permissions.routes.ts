@@ -13,7 +13,7 @@ permissionsRouter.post(
       name: Joi.string().required(),
       description: Joi.string().required(),
     },
-  }),
+  }, { abortEarly: false }),
   permissionsController.create,
 );
 

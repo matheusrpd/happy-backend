@@ -16,7 +16,7 @@ donationsRouter.post(
       credit_card_id: Joi.string().required(),
       amount: Joi.number().required(),
     },
-  }),
+  }, { abortEarly: false }),
   ensureAuthenticated,
   donationsController.create,
 );

@@ -25,7 +25,7 @@ usersRouter.post(
       zipcode: Joi.string().required(),
       roles: Joi.array().items(Joi.string()).required()
     },
-  }),
+  }, { abortEarly: false }),
   usersController.create,
 );
 

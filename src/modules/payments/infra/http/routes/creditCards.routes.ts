@@ -17,7 +17,7 @@ creditCardsRouter.post(
       expiration_date: Joi.string().required(),
       holder_name: Joi.string().required(),
     },
-  }),
+  }, { abortEarly: false }),
   ensureAuthenticated,
   creditCardsController.create,
 );

@@ -17,7 +17,7 @@ rolesRouter.post(
       description: Joi.string().required(),
       permissions: Joi.array().items(Joi.string()).required()
     },
-  }),
+  }, { abortEarly: false }),
   rolesController.create,
 );
 

@@ -13,7 +13,7 @@ sessionsRouter.post(
       email: Joi.string().email().required(),
       password: Joi.string().required(),
     },
-  }),
+  }, { abortEarly: false }),
   sessionsController.create,
 );
 

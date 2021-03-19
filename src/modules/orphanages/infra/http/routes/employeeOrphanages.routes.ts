@@ -45,7 +45,7 @@ employeeOrphanagesRouter.post(
       opening_hours: Joi.string().required(),
       open_on_weekends: Joi.boolean().required(),
     },
-  }),
+  }, { abortEarly: false }),
   employeeOrphanagesController.create,
 );
 
@@ -64,7 +64,7 @@ employeeOrphanagesRouter.put(
       opening_hours: Joi.string(),
       open_on_weekends: Joi.boolean(),
     },
-  }),
+  }, { abortEarly: false }),
   employeeOrphanagesController.update,
 );
 

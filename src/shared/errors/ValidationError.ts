@@ -32,10 +32,6 @@ class ValidationError {
     if (type === 'date.base') {
       this.message = `${this.value} é um valor do tipo data.`;
     }
-
-    if (type === 'object.unknown') {
-      this.message = `${this.value} não é um valor permitido.`;
-    }
   }
 }
   

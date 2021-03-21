@@ -33,7 +33,11 @@ app.use(
       const errorBody = error.details.get('body'); 
       const errors: String[] = [];
 
-      errorBody!.details.forEach(errorItem => {        
+      errorBody!.details.forEach(errorItem => {   
+        if (errorItem.type === 'object.unknown') {
+          return;
+        }    
+  
         const error = new ValidationError({
           value: errorItem.path[0],
           type: errorItem.type,

@@ -3,6 +3,7 @@ import { celebrate, Segments, Joi } from 'celebrate';
 
 import ProfileController from '../controllers/ProfileController';
 import ensureAuthenticated from '../middlewares/ensureAuthenticated';
+import { is } from '@modules/users/infra/htpp/middlewares/ensurePermission';
 
 const profileRouter = Router();
 const profileController = new ProfileController();
@@ -32,6 +33,7 @@ profileRouter.put(
       zipcode: Joi.string().required(),
     },
   }, { abortEarly: false }),
+  is(['ROLE_USER', 'ROLE_EMPLOYEE']),
   profileController.update,
 );
 

@@ -36,7 +36,8 @@ app.use(
       errorBody!.details.forEach(errorItem => {        
         const error = new ValidationError({
           value: errorItem.path[0],
-          type: errorItem.type
+          type: errorItem.type,
+          message: errorItem.message
         });
 
         errors.push(error.message);

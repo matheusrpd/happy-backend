@@ -17,23 +17,23 @@ class ValidationError {
     this.statusCode = statusCode;
     this.message = message;
     
-    if (!message && type === 'any.required') {
+    if (type === 'any.required') {
       this.message = `${this.value} é um valor obrigatório.`;
     }
 
-    if (!message && type === 'string.base') {
+    if (type === 'string.base') {
       this.message = `${this.value} é um valor do tipo texto.`;
     }
 
-    if (!message && type === 'number.base') {
+    if (type === 'number.base') {
       this.message = `${this.value} é um valor do tipo número.`;
     }
 
-    if (!message && type === 'date.base') {
+    if (type === 'date.base') {
       this.message = `${this.value} é um valor do tipo data.`;
     }
 
-    if (!message && type === 'object.unknown') {
+    if (type === 'object.unknown') {
       this.message = `${this.value} não é um valor permitido.`;
     }
   }

@@ -26,7 +26,6 @@ export default class EmployeeOrphanagesController {
       instructions, 
       opening_hours, 
       open_on_weekends,
-      active
     } = request.body;
     const { id: employee_id } = request.user;
 
@@ -47,7 +46,6 @@ export default class EmployeeOrphanagesController {
       instructions, 
       opening_hours, 
       open_on_weekends,
-      active,
       employee_id,
       images
     });

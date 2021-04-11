@@ -21,6 +21,9 @@ import CreditCardsRepository from '@modules/payments/infra/typeorm/repositories/
 import IDonationsRepository from '@modules/payments/repositories/IDonationsRepository';
 import DonationsRepository from '@modules/payments/infra/typeorm/repositories/DonationsRepository';
 
+import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository';
+import AppointmentsRepository from '@modules/appointments/infra/typeorm/repositories/AppointmentsRepository';
+
 container.registerSingleton<IOrphanagesRepository>(
   'OrphanagesRepository',
   OrphanagesRepository,
@@ -49,4 +52,9 @@ container.registerSingleton<ICreditCardsRepository>(
 container.registerSingleton<IDonationsRepository>(
   'DonationsRepository',
   DonationsRepository,
+);
+
+container.registerSingleton<IAppointmentsRepository>(
+  'AppointmentsRepository',
+  AppointmentsRepository,
 );

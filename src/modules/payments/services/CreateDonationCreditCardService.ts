@@ -18,7 +18,7 @@ interface IRequest {
 }
 
 @injectable()
-class CreateDonationService {
+class CreateDonationCreditCardService {
   constructor(
     @inject('DonationsRepository')
     private donationsRepository: IDonationsRepository,
@@ -128,4 +128,4 @@ class CreateDonationService {
   }
 }
 
-export default CreateDonationService;
+export default CreateDonationCreditCardService;

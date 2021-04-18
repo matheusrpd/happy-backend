@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 import { classToClass } from 'class-transformer';
 
-import CreateDonationCreditCardService from '@modules/payments/services/CreateDonationCreditCardService';
+import CreateDonationService from '@modules/payments/services/CreateDonationService';
 
 export default class DonationsController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -14,9 +14,9 @@ export default class DonationsController {
 
     const { id } = request.user;
 
-    const createCreditCardDonation = container.resolve(CreateDonationCreditCardService);
+    const createDonation = container.resolve(CreateDonationService);
 
-    const donation = await createCreditCardDonation.execute({
+    const donation = await createDonation.execute({
       user_id: id,
       orphanage_id, 
       credit_card_id, 

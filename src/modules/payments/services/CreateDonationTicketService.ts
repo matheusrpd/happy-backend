@@ -3,22 +3,17 @@ import pagarme from 'pagarme';
 
 import AppError from '@shared/errors/AppError';
 
+import ICreateDonationStrategy from './ICreateDonationStrategy';
 import IDonationsRepository from '../repositories/IDonationsRepository';
 import ICreditCardsRepository from '../repositories/ICreditCardsRepository';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import IOrphanagesRepository from '@modules/orphanages/repositories/IOrphanagesRepository';
 
 import Donation from '../infra/typeorm/entities/Donation';
-
-interface IRequest {
-  user_id: string;
-  orphanage_id: string;
-  amount: number;
-  credit_card_id: string;
-}
+import { IRequest } from './CreateDonationService';
 
 @injectable()
-class CreateDonationTicketService {
+class CreateDonationTicketService implements ICreateDonationStrategy {
   constructor(
     @inject('DonationsRepository')
     private donationsRepository: IDonationsRepository,
@@ -62,7 +57,7 @@ class CreateDonationTicketService {
       "payment_method": 'boleto',
       "customer": {
         "type": 'individual',
-        "country": user.country,
+        "country": "br",
         "name": user.name,
         "documents": [
           {

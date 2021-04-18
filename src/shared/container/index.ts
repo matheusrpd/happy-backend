@@ -24,6 +24,9 @@ import DonationsRepository from '@modules/payments/infra/typeorm/repositories/Do
 import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository';
 import AppointmentsRepository from '@modules/appointments/infra/typeorm/repositories/AppointmentsRepository';
 
+import ICreateDonationStrategy from '@modules/payments/services/ICreateDonationStrategy';
+import CreateDonationCreditCardService from '@modules/payments/services/CreateDonationCreditCardService';
+
 container.registerSingleton<IOrphanagesRepository>(
   'OrphanagesRepository',
   OrphanagesRepository,
@@ -57,4 +60,9 @@ container.registerSingleton<IDonationsRepository>(
 container.registerSingleton<IAppointmentsRepository>(
   'AppointmentsRepository',
   AppointmentsRepository,
+);
+
+container.registerSingleton<ICreateDonationStrategy>(
+  'CreateDonationService',
+  CreateDonationCreditCardService,
 );

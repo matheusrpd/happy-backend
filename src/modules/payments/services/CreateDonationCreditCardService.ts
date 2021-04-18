@@ -3,17 +3,17 @@ import pagarme from 'pagarme';
 
 import AppError from '@shared/errors/AppError';
 
-import ICreateDonationStrategy from './ICreateDonationStrategy';
+import ICreateDonationService from './ICreateDonationService';
 import IDonationsRepository from '../repositories/IDonationsRepository';
 import ICreditCardsRepository from '../repositories/ICreditCardsRepository';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import IOrphanagesRepository from '@modules/orphanages/repositories/IOrphanagesRepository';
 
 import Donation from '../infra/typeorm/entities/Donation';
-import { IRequest } from './CreateDonationService';
+import { IRequest } from './ICreateDonationService';
 
 @injectable()
-class CreateDonationCreditCardService implements ICreateDonationStrategy {
+class CreateDonationCreditCardService implements ICreateDonationService {
   constructor(
     @inject('DonationsRepository')
     private donationsRepository: IDonationsRepository,

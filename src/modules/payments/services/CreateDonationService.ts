@@ -1,20 +1,13 @@
 import { injectable, inject } from 'tsyringe';
 
-import ICreateDonationStrategy from './ICreateDonationStrategy';
+import ICreateDonationService, { IRequest } from './ICreateDonationService';
 import Donation from '../infra/typeorm/entities/Donation';
-
-export interface IRequest {
-  user_id: string;
-  orphanage_id: string;
-  amount: number;
-  credit_card_id: string;
-}
 
 @injectable()
 class CreateDonationService {
   constructor(
     @inject('CreateDonationService')
-    private createDonationService: ICreateDonationStrategy,
+    private createDonationService: ICreateDonationService,
   ) {}
 
   async execute({ 

@@ -24,8 +24,11 @@ import DonationsRepository from '@modules/payments/infra/typeorm/repositories/Do
 import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository';
 import AppointmentsRepository from '@modules/appointments/infra/typeorm/repositories/AppointmentsRepository';
 
-import ICreateDonationStrategy from '@modules/payments/services/ICreateDonationStrategy';
+import ICreateDonationService from '@modules/payments/services/ICreateDonationService';
 import CreateDonationCreditCardService from '@modules/payments/services/CreateDonationCreditCardService';
+
+import ICreateAppointmentService from '@modules/appointments/services/ICreateAppointmentService';
+import CreateAppointmentOrphanageService from '@modules/appointments/services/CreateAppointmentOrphanageService';
 
 container.registerSingleton<IOrphanagesRepository>(
   'OrphanagesRepository',
@@ -62,7 +65,12 @@ container.registerSingleton<IAppointmentsRepository>(
   AppointmentsRepository,
 );
 
-container.registerSingleton<ICreateDonationStrategy>(
+container.registerSingleton<ICreateDonationService>(
   'CreateDonationService',
   CreateDonationCreditCardService,
+);
+
+container.registerSingleton<ICreateAppointmentService>(
+  'CreateAppointmentService',
+  CreateAppointmentOrphanageService,
 );

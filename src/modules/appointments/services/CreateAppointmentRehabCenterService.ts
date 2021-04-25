@@ -1,4 +1,4 @@
-import { startOfWeek, isBefore } from 'date-fns';
+import { startOfMonth, isBefore } from 'date-fns';
 import { injectable, inject } from 'tsyringe';
 import AppError from '@shared/errors/AppError';
 
@@ -7,7 +7,7 @@ import Appointment from '@modules/appointments/infra/typeorm/entities/Appointmen
 import ICreateAppointmentService, { IRequest } from './ICreateAppointmentService';
 
 @injectable()
-class CreateAppointmentOrphanageService implements ICreateAppointmentService {
+class CreateAppointmentRehabCenterService implements ICreateAppointmentService {
   constructor(
     @inject('AppointmentsRepository')
     private appointmentsRepository: IAppointmentsRepository,
@@ -20,18 +20,13 @@ class CreateAppointmentOrphanageService implements ICreateAppointmentService {
   }: IRequest): Promise<Appointment> {
     const appointmentsUser = await this.appointmentsRepository.findByUser({ userId });
 
-    const startWeekDate = startOfWeek(date);
-    let qtdsAppointments = 0;
+    const startMonthDate = startOfMonth(date);
 
     appointmentsUser?.forEach(findAppointment => {
-      if (!isBefore(findAppointment.date, startWeekDate)) {
-        qtdsAppointments++;
+      if (!isBefore(findAppointment.date, startMonthDate)) {
+        throw new AppError('User can only make an appointment per month.');
       }
     });
-
-    if (qtdsAppointments >= 2) {
-      throw new AppError('The user can only make two consultations per week.');
-    }
 
     const appointment = await this.appointmentsRepository.create({
       organizationId,
@@ -43,4 +38,4 @@ class CreateAppointmentOrphanageService implements ICreateAppointmentService {
   }
 }
 
-export default CreateAppointmentOrphanageService;
+export default CreateAppointmentRehabCenterService;

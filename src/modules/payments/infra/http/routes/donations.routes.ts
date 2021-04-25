@@ -14,7 +14,7 @@ donationsRouter.post(
   celebrate({
     [Segments.BODY]: {
       orphanage_id: Joi.string().required(),
-      credit_card_id: Joi.string().uuid().required(),
+      credit_card_id: Joi.string().uuid(),
       amount: Joi.number().required(),
     },
   }, { abortEarly: false }),

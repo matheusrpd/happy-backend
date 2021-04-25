@@ -10,7 +10,7 @@ import Donation from '../infra/typeorm/entities/Donation';
 import { IRequest } from './ICreateDonationService';
 
 @injectable()
-class CreateDonationTicketService implements ICreateDonationService {
+class CreateDonationTicketRestrictedService implements ICreateDonationService {
   constructor(
     @inject('DonationsRepository')
     private donationsRepository: IDonationsRepository,
@@ -21,6 +21,10 @@ class CreateDonationTicketService implements ICreateDonationService {
     orphanage,
     amount: amountClient
   }: IRequest): Promise<Donation> {
+    if (amountClient < 500) {
+      throw new AppError('Minimum donation amount is 500 reais.');
+    }
+
     const clientPagarme = await pagarme.client.connect({
       api_key: 'ak_test_YGwKqEp4XVrQIuTt9anOLCzheD5JZJ'
     });
@@ -61,4 +65,4 @@ class CreateDonationTicketService implements ICreateDonationService {
   }
 }
 
-export default CreateDonationTicketService;
+export default CreateDonationTicketRestrictedService;

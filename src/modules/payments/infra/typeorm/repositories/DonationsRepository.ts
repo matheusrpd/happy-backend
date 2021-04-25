@@ -22,7 +22,7 @@ class DonationsRepository implements IDonationsRepository {
     amount
   }: ICreateDonationDTO): Promise<Donation> {
 
-    const donation = this.ormRepository.create({ 
+    const donation = this.ormRepository.create({
       user,
       orphanage,
       amount

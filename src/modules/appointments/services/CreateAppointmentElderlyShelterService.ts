@@ -7,7 +7,7 @@ import Appointment from '@modules/appointments/infra/typeorm/entities/Appointmen
 import ICreateAppointmentService, { IRequest } from './ICreateAppointmentService';
 
 @injectable()
-class CreateAppointmentOrphanageService implements ICreateAppointmentService {
+class CreateAppointmentElderlyShelterService implements ICreateAppointmentService {
   constructor(
     @inject('AppointmentsRepository')
     private appointmentsRepository: IAppointmentsRepository,
@@ -21,17 +21,12 @@ class CreateAppointmentOrphanageService implements ICreateAppointmentService {
     const appointmentsUser = await this.appointmentsRepository.findByUser({ userId });
 
     const startWeekDate = startOfWeek(date);
-    let qtdsAppointments = 0;
 
     appointmentsUser?.forEach(findAppointment => {
       if (!isBefore(findAppointment.date, startWeekDate)) {
-        qtdsAppointments++;
+        throw new AppError('User can only make an appointment per week.');
       }
     });
-
-    if (qtdsAppointments >= 2) {
-      throw new AppError('The user can only make two consultations per week.');
-    }
 
     const appointment = await this.appointmentsRepository.create({
       organizationId,
@@ -43,4 +38,4 @@ class CreateAppointmentOrphanageService implements ICreateAppointmentService {
   }
 }
 
-export default CreateAppointmentOrphanageService;
+export default CreateAppointmentElderlyShelterService;
